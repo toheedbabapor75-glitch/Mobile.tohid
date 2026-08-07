@@ -26,14 +26,14 @@ body{
     display:flex;
     justify-content:center;
     align-items:center;
-    overflow-x:hidden;
+    overflow:hidden;
 }
 
 .container{
     width:100%;
     max-width:520px;
     min-height:100vh;
-    padding:18px 12px 25px;
+    padding:15px 10px;
     display:flex;
     flex-direction:column;
     justify-content:center;
@@ -49,39 +49,38 @@ body{
 
 .subtitle{
     font-size:15px;
-    opacity:.85;
     text-align:center;
-    margin-bottom:15px;
+    opacity:.9;
+    margin-bottom:12px;
 }
 
 .wheel-box{
     position:relative;
     width:min(94vw,460px);
-    aspect-ratio:1/1;
+    aspect-ratio:1;
 }
 
 canvas{
     width:100%;
     height:100%;
     display:block;
-    filter:drop-shadow(0 12px 20px rgba(0,0,0,.4));
 }
 
 .pointer{
     position:absolute;
-    top:-3px;
+    top:-2px;
     left:50%;
     transform:translateX(-50%);
-    z-index:5;
+    z-index:10;
 
     width:0;
     height:0;
 
     border-left:20px solid transparent;
     border-right:20px solid transparent;
-    border-bottom:38px solid white;
+    border-bottom:38px solid #fff;
 
-    filter:drop-shadow(0 4px 4px rgba(0,0,0,.6));
+    filter:drop-shadow(0 4px 4px #000);
 }
 
 .center{
@@ -90,59 +89,57 @@ canvas{
     left:50%;
     transform:translate(-50%,-50%);
 
-    width:75px;
-    height:75px;
-
-    background:white;
-    color:#111827;
+    width:82px;
+    height:82px;
 
     border-radius:50%;
-    border:7px solid #facc15;
+
+    background:#080808;
+    color:#f4c542;
+
+    border:7px solid #d4af37;
 
     display:flex;
     justify-content:center;
     align-items:center;
 
+    font-size:17px;
     font-weight:900;
-    font-size:14px;
 
-    box-shadow:0 5px 20px rgba(0,0,0,.4);
+    box-shadow:0 5px 20px #0008;
 }
 
-button{
-    margin-top:18px;
+#spin{
+    margin-top:15px;
 
     border:0;
     border-radius:18px;
 
-    padding:16px 30px;
+    padding:15px 28px;
 
     font-size:19px;
     font-weight:900;
 
-    background:#facc15;
-    color:#111827;
+    background:#f4c542;
+    color:#111;
 
     cursor:pointer;
 
-    box-shadow:0 7px 0 #a16207;
-
-    transition:.15s;
+    box-shadow:0 6px 0 #9a7410;
 }
 
-button:active{
-    transform:translateY(5px);
-    box-shadow:0 2px 0 #a16207;
+#spin:active{
+    transform:translateY(4px);
+    box-shadow:0 2px 0 #9a7410;
 }
 
-button:disabled{
+#spin:disabled{
     opacity:.6;
-    cursor:not-allowed;
 }
 
-/* صفحه کامل نتیجه */
+/* نتیجه تمام صفحه */
 
-.result-screen{
+#resultScreen{
     position:fixed;
     inset:0;
 
@@ -150,24 +147,24 @@ button:disabled{
     height:100vh;
     height:100dvh;
 
-    background:rgba(10,10,30,.97);
+    background:rgba(5,5,20,.97);
 
     display:none;
 
-    justify-content:center;
     align-items:center;
+    justify-content:center;
 
     padding:20px;
 
     z-index:99999;
 }
 
-.result-box{
+.resultBox{
     width:100%;
     max-width:500px;
 
-    background:white;
-    color:#111827;
+    background:#fff;
+    color:#111;
 
     border-radius:30px;
 
@@ -175,14 +172,14 @@ button:disabled{
 
     text-align:center;
 
-    box-shadow:0 20px 70px rgba(0,0,0,.7);
+    box-shadow:0 20px 70px #000;
 
-    animation:popup .5s ease;
+    animation:showResult .45s ease;
 }
 
-@keyframes popup{
+@keyframes showResult{
     from{
-        transform:scale(.6);
+        transform:scale(.5);
         opacity:0;
     }
 
@@ -192,61 +189,65 @@ button:disabled{
     }
 }
 
-.result-title{
+.resultTitle{
     font-size:30px;
     font-weight:900;
     margin-bottom:20px;
 }
 
-.result-prize{
-    font-size:clamp(25px,7vw,38px);
-    line-height:1.7;
-
-    font-weight:900;
-
+.resultPrize{
     color:#7c3aed;
 
-    margin:20px 0;
+    font-size:clamp(24px,7vw,38px);
+
+    font-weight:900;
+
+    line-height:1.7;
+
+    margin:15px 0;
 }
 
-.result-shop{
+.resultShop{
     font-size:21px;
     font-weight:900;
-    margin-top:20px;
+    margin-top:15px;
 }
 
-.close-result{
-    margin-top:28px;
-
+.close{
     width:100%;
+
+    margin-top:25px;
+
+    border:0;
+    border-radius:16px;
+
+    padding:14px;
 
     background:#7c3aed;
     color:white;
 
-    box-shadow:0 6px 0 #4c1d95;
+    font-size:18px;
+    font-weight:900;
+
+    cursor:pointer;
 }
 
 @media(max-height:700px){
-
-    .container{
-        padding-top:8px;
-        padding-bottom:10px;
-    }
 
     .title{
         font-size:22px;
     }
 
     .subtitle{
-        margin-bottom:5px;
+        margin-bottom:4px;
     }
 
     .wheel-box{
         width:min(82vh,90vw);
     }
 
-    button{
-        margin-top:10px;
+    #spin{
+        margin-top:7px;
         padding:12px 25px;
     }
 }
@@ -277,7 +278,7 @@ button:disabled{
 
     </div>
 
-    <button id="spinButton">
+    <button id="spin">
         🎡 چرخاندن گردونه
     </button>
 
@@ -286,21 +287,22 @@ button:disabled{
 
 <!-- نتیجه -->
 
-<div class="result-screen" id="resultScreen">
+<div id="resultScreen">
 
-    <div class="result-box">
+    <div class="resultBox">
 
-        <div class="result-title">
+        <div class="resultTitle">
             🎉 تبریک! 🎉
         </div>
 
-        <div class="result-prize" id="resultPrize"></div>
+        <div class="resultPrize" id="resultPrize">
+        </div>
 
-        <div class="result-shop">
+        <div class="resultShop">
             📱 موبایل توحید
         </div>
 
-        <button class="close-result" onclick="closeResult()">
+        <button class="close" onclick="closeResult()">
             متوجه شدم
         </button>
 
@@ -311,7 +313,7 @@ button:disabled{
 
 <script>
 
-const prizes = [
+const labels = [
 
     "🎁 ۵٪ تخفیف",
 
@@ -335,6 +337,7 @@ const prizes = [
 
 ];
 
+
 const colors = [
 
     "#ef4444",
@@ -350,11 +353,15 @@ const colors = [
 
 ];
 
-const canvas = document.getElementById("wheel");
-const ctx = canvas.getContext("2d");
 
-const spinButton =
-    document.getElementById("spinButton");
+const canvas =
+    document.getElementById("wheel");
+
+const ctx =
+    canvas.getContext("2d");
+
+const spinBtn =
+    document.getElementById("spin");
 
 const resultScreen =
     document.getElementById("resultScreen");
@@ -362,20 +369,18 @@ const resultScreen =
 const resultPrize =
     document.getElementById("resultPrize");
 
-const N = prizes.length;
+
+const n = labels.length;
+
+const arc =
+    2 * Math.PI / n;
 
 let rotation = 0;
+
 let spinning = false;
 
 
-function drawWheel(){
-
-    const cx = 450;
-    const cy = 450;
-    const radius = 410;
-
-    const step =
-        Math.PI * 2 / N;
+function draw(){
 
     ctx.clearRect(
         0,
@@ -385,38 +390,44 @@ function drawWheel(){
     );
 
 
-    for(let i=0;i<N;i++){
+    const cx = 450;
+
+    const cy = 450;
+
+    const r = 420;
+
+
+    for(let i=0;i<n;i++){
 
         const start =
             rotation +
-            i * step -
+            i * arc -
             Math.PI / 2;
 
         const end =
-            start + step;
+            start + arc;
 
 
         ctx.beginPath();
 
-        ctx.moveTo(
-            cx,
-            cy
-        );
+        ctx.moveTo(cx,cy);
 
         ctx.arc(
             cx,
             cy,
-            radius,
+            r,
             start,
             end
         );
 
         ctx.closePath();
 
+
         ctx.fillStyle =
             colors[i];
 
         ctx.fill();
+
 
         ctx.strokeStyle =
             "#fff";
@@ -434,8 +445,9 @@ function drawWheel(){
         );
 
         ctx.rotate(
-            start + step/2
+            start + arc / 2
         );
+
 
         ctx.textAlign =
             "right";
@@ -447,162 +459,173 @@ function drawWheel(){
             "#fff";
 
         ctx.font =
-            "bold 25px Tahoma";
+            "bold 22px Tahoma";
 
         ctx.shadowColor =
-            "rgba(0,0,0,.5)";
+            "#000";
 
-        ctx.shadowBlur = 4;
+        ctx.shadowBlur = 5;
+
 
         ctx.fillText(
-            prizes[i],
-            375,
+            labels[i],
+            r - 25,
             0
         );
+
 
         ctx.restore();
 
     }
 
 
+    /* مرکز گردونه */
+
     ctx.beginPath();
 
     ctx.arc(
         cx,
         cy,
-        68,
+        82,
         0,
-        Math.PI * 2
+        2 * Math.PI
     );
 
     ctx.fillStyle =
-        "#fff";
+        "#080808";
 
     ctx.fill();
 
-    ctx.strokeStyle =
-        "#facc15";
 
-    ctx.lineWidth = 12;
+    ctx.lineWidth = 8;
+
+    ctx.strokeStyle =
+        "#d4af37";
 
     ctx.stroke();
+
+
+    ctx.fillStyle =
+        "#f4c542";
+
+    ctx.font =
+        "bold 28px Tahoma";
+
+    ctx.textAlign =
+        "center";
+
+    ctx.textBaseline =
+        "middle";
+
+    ctx.fillText(
+        "توحید",
+        cx,
+        cy
+    );
 
 }
 
 
-drawWheel();
+draw();
 
 
-function spinWheel(){
+function spin(){
 
     if(spinning)
         return;
 
+
     spinning = true;
 
-    spinButton.disabled =
+    spinBtn.disabled =
         true;
 
 
     const winner =
         Math.floor(
-            Math.random() * N
+            Math.random() * n
         );
 
 
-    const step =
-        Math.PI * 2 / N;
+    const turns =
+        6 + Math.random() * 2;
 
 
     const target =
-        -winner * step -
-        step / 2;
+        -winner * arc -
+        arc / 2;
 
 
     const current =
-        ((rotation %
-        (Math.PI * 2))
-        + Math.PI * 2)
-        % (Math.PI * 2);
+        rotation %
+        (2 * Math.PI);
 
 
-    let delta =
-        target - current;
+    const final =
+        rotation +
+        turns * 2 * Math.PI +
+        (target - current);
 
 
-    while(delta < 0){
-
-        delta +=
-            Math.PI * 2;
-
-    }
-
-
-    delta +=
-        (6 +
-        Math.floor(
-            Math.random() * 3
-        ))
-        * Math.PI * 2;
-
-
-    const startRotation =
+    const start =
         rotation;
 
-    const duration =
-        5500;
 
-    const startTime =
+    const duration =
+        5200;
+
+
+    const t0 =
         performance.now();
 
 
-    function animate(time){
+    function anim(t){
 
-        const progress =
+        const p =
             Math.min(
                 1,
-                (time - startTime)
-                / duration
+                (t - t0) / duration
             );
 
 
-        const ease =
+        const e =
             1 -
             Math.pow(
-                1 - progress,
+                1 - p,
                 4
             );
 
 
         rotation =
-            startRotation +
-            delta * ease;
+            start +
+            (final - start) * e;
 
 
-        drawWheel();
+        draw();
 
 
-        if(progress < 1){
+        if(p < 1){
 
             requestAnimationFrame(
-                animate
+                anim
             );
 
         }else{
 
             rotation =
                 rotation %
-                (Math.PI * 2);
+                (2 * Math.PI);
 
 
             spinning = false;
 
-            spinButton.disabled =
+
+            spinBtn.disabled =
                 false;
 
 
             showResult(
-                prizes[winner]
+                labels[winner]
             );
 
         }
@@ -611,7 +634,7 @@ function spinWheel(){
 
 
     requestAnimationFrame(
-        animate
+        anim
     );
 
 }
@@ -636,53 +659,12 @@ function closeResult(){
 }
 
 
-spinButton.addEventListener(
+spinBtn.addEventListener(
     "click",
-    spinWheel
+    spin
 );
 
 </script>
 
-</body>
-</html>const spinBtn=document.getElementById('spin'), result=document.getElementById('result');
-let rotation=0, spinning=false;
-const n=labels.length, arc=2*Math.PI/n;
-function draw(){
- ctx.clearRect(0,0,900,900);
- const cx=450,cy=450,r=420;
- for(let i=0;i<n;i++){
-   const a0=rotation+i*arc-Math.PI/2, a1=a0+arc;
-   ctx.beginPath();ctx.moveTo(cx,cy);ctx.arc(cx,cy,r,a0,a1);ctx.closePath();
-   ctx.fillStyle=colors[i];ctx.fill();ctx.lineWidth=7;ctx.strokeStyle="#111";ctx.stroke();
-   ctx.save();ctx.translate(cx,cy);ctx.rotate(a0+arc/2);
-   ctx.textAlign="right";ctx.fillStyle="#fff";ctx.font="bold 28px Tahoma";
-   let t=labels[i]; if(t.length>23){ctx.font="bold 22px Tahoma";}
-   ctx.shadowColor="#000";ctx.shadowBlur=5;ctx.fillText(t,r-24,8);ctx.restore();
- }
- ctx.beginPath();ctx.arc(cx,cy,82,0,2*Math.PI);ctx.fillStyle="#080808";ctx.fill();ctx.lineWidth=8;ctx.strokeStyle="#d4af37";ctx.stroke();
- ctx.fillStyle="#f4c542";ctx.font="bold 28px Tahoma";ctx.textAlign="center";ctx.fillText("توحید",cx,10+cy);
-}
-draw();
-function spin(){
- if(spinning)return; spinning=true;spinBtn.disabled=true;result.style.display="none";
- const winner=Math.floor(Math.random()*n);
- const turns=6+Math.random()*2;
- const target=-winner*arc-arc/2;
- const start=rotation;
- const final=start+turns*2*Math.PI+(target-(start%(2*Math.PI)));
- const duration=5200, t0=performance.now();
- function anim(t){
-   const p=Math.min(1,(t-t0)/duration), e=1-Math.pow(1-p,4);
-   rotation=start+(final-start)*e;draw();
-   if(p<1)requestAnimationFrame(anim);else{
-     spinning=false;spinBtn.disabled=false;
-     result.innerHTML="🎉 نتیجه شما: <strong>"+labels[winner]+"</strong><br><span style='font-size:14px;color:#bbb'>از نتیجه اسکرین‌شات بگیر و برای موبایل توحید دایرکت کن.</span>";
-     result.style.display="block";
-   }
- }
- requestAnimationFrame(anim);
-}
-spinBtn.onclick=spin;
-</script>
 </body>
 </html>
